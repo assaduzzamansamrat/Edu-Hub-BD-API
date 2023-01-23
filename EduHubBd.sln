@@ -1,15 +1,15 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 17
-VisualStudioVersion = 17.0.32112.339
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.32106.194
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EduHubBd", "EduHubBd\EduHubBd.csproj", "{F305E491-876F-4BF6-83D0-60F575E770E1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EduHubEntity", "EduHubEntiry\EduHubEntity.csproj", "{7880A270-9261-4B3D-9F98-34F400EF2422}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EduHubEntity", "EduHubEntiry\EduHubEntity.csproj", "{7880A270-9261-4B3D-9F98-34F400EF2422}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EduHubInterface", "EduHubInterface\EduHubInterface.csproj", "{4C652BDE-47AB-4C3C-B5A4-7B0EE49AD7BD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EduHubInterface", "EduHubInterface\EduHubInterface.csproj", "{4C652BDE-47AB-4C3C-B5A4-7B0EE49AD7BD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EduHubRepository", "EduHubRepository\EduHubRepository.csproj", "{00FF9208-3DEB-4AC1-9147-C954CD6BE755}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EduHubRepository", "EduHubRepository\EduHubRepository.csproj", "{00FF9208-3DEB-4AC1-9147-C954CD6BE755}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EduHubBd", "EduHubBd\EduHubBd.csproj", "{3723A125-E7CD-4733-806A-390505CB2815}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,10 +17,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{F305E491-876F-4BF6-83D0-60F575E770E1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F305E491-876F-4BF6-83D0-60F575E770E1}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F305E491-876F-4BF6-83D0-60F575E770E1}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F305E491-876F-4BF6-83D0-60F575E770E1}.Release|Any CPU.Build.0 = Release|Any CPU
 		{7880A270-9261-4B3D-9F98-34F400EF2422}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{7880A270-9261-4B3D-9F98-34F400EF2422}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7880A270-9261-4B3D-9F98-34F400EF2422}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -33,6 +29,10 @@ Global
 		{00FF9208-3DEB-4AC1-9147-C954CD6BE755}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{00FF9208-3DEB-4AC1-9147-C954CD6BE755}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{00FF9208-3DEB-4AC1-9147-C954CD6BE755}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3723A125-E7CD-4733-806A-390505CB2815}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3723A125-E7CD-4733-806A-390505CB2815}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3723A125-E7CD-4733-806A-390505CB2815}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3723A125-E7CD-4733-806A-390505CB2815}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
