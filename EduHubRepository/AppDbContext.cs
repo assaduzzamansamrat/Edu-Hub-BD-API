@@ -1,8 +1,7 @@
 ﻿using EduHubEntity;
-using EduHubRepository.Migrations;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
-using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,14 +9,13 @@ using System.Threading.Tasks;
 namespace EduHubRepository
 {
     public class AppDbContext : DbContext
-    {
-        public AppDbContext() : base("EduHubDB")
-
+    {    
+        public AppDbContext(DbContextOptions<AppDbContext> options)
+     : base(options)
         {
-            Database.SetInitializer(new MigrateDatabaseToLatestVersion<AppDbContext, Configuration>());
 
         }
-        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
         }

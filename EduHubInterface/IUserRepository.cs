@@ -9,6 +9,6 @@ namespace EduHubInterface
 {
     public interface IUserRepository : IRepository<User>
     {
-        List<User> Search(string searchText);
+        Task<List<User>> SearchAsync(string searchText);
     }
 }

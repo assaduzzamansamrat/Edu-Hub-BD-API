@@ -1,8 +1,8 @@
 ﻿using EduHubEntity;
 using EduHubInterface;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
-using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,7 +11,12 @@ namespace EduHubRepository
 {
     public abstract class Repository<TEntity> : IRepository<TEntity> where TEntity : Entity
     {
-        private readonly AppDbContext context;
+        private readonly AppDbContext context;  
+        
+        public Repository(AppDbContext _context)
+        {
+            context = _context;
+        }
         public async Task<List<TEntity>> GetAllAsync()
         {
             try
@@ -24,7 +29,7 @@ namespace EduHubRepository
                 throw ex;
             }
         }
-        public async Task<TEntity> Get(long id)
+        public async Task<TEntity> GetAsync(long id)
         {
             try
             {
@@ -38,7 +43,7 @@ namespace EduHubRepository
 
         }
 
-        public async Task<int> Insert(TEntity entity)
+        public async Task<int> InsertAsync(TEntity entity)
         {
             try
             {
@@ -53,7 +58,7 @@ namespace EduHubRepository
 
         }
 
-        public async Task<int> Update(TEntity entity)
+        public async Task<int> UpdateAsync(TEntity entity)
         {
             try
             {
@@ -68,12 +73,12 @@ namespace EduHubRepository
 
         }
 
-        public int Delete(TEntity entity)
+        public async Task<int> DeleteAsync(TEntity entity)
         {
             try
             {
                 this.context.Set<TEntity>().Remove(entity);
-                return this.context.SaveChanges();
+                return await this.context.SaveChangesAsync();
             }
             catch (Exception ex)
             {
@@ -83,24 +88,6 @@ namespace EduHubRepository
 
         }
 
-        List<TEntity> IRepository<TEntity>.GetAllAsync()
-        {
-            throw new NotImplementedException();
-        }
-
-        TEntity IRepository<TEntity>.Get(long id)
-        {
-            throw new NotImplementedException();
-        }
-
-        int IRepository<TEntity>.Insert(TEntity entity)
-        {
-            throw new NotImplementedException();
-        }
-
-        int IRepository<TEntity>.Update(TEntity entity)
-        {
-            throw new NotImplementedException();
-        }
+        
     }
 }
