@@ -10,14 +10,15 @@ namespace EduHubRepository
 {
     public class UserRepository : Repository<User>, IUserRepository
     {
-        public List<User> Search(string searchText)
+        public async Task<List<User>> Search(string searchText)
         {
             try
             {
                 List<User> userList = new List<User>();
-                userList.AddRange(this.GetAll().Where(p => p.FirstName.Contains(searchText)).ToList());
-                userList.AddRange(this.GetAll().Where(p => p.LastName.Contains(searchText)).ToList());
-                return userList;
+                userList.AddRange(await this.GetAllAsync());
+                userList.Where(x => x.FirstName.Contains(searchText));
+                userList.Where(x => x.LastName.Contains(searchText));             
+                return  userList;
             }
             catch (Exception ex)
             {
@@ -25,6 +26,11 @@ namespace EduHubRepository
                 throw ex;
             }
            
+        }
+
+        List<User> IUserRepository.Search(string searchText)
+        {
+            throw new NotImplementedException();
         }
     }
 }

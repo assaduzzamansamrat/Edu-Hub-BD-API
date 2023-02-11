@@ -1,8 +1,8 @@
 ﻿using EduHubEntity;
 using EduHubInterface;
-using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,12 +12,11 @@ namespace EduHubRepository
     public abstract class Repository<TEntity> : IRepository<TEntity> where TEntity : Entity
     {
         private readonly AppDbContext context;
-
-        public List<TEntity> GetAll()
+        public async Task<List<TEntity>> GetAllAsync()
         {
             try
             {
-                return this.context.Set<TEntity>().ToList();
+                return  await this.context.Set<TEntity>().ToListAsync();
             }
             catch (Exception ex)
             {
@@ -25,11 +24,11 @@ namespace EduHubRepository
                 throw ex;
             }
         }
-        public TEntity Get(long id)
+        public async Task<TEntity> Get(long id)
         {
             try
             {
-                return this.context.Set<TEntity>().Find(id);
+                return await this.context.Set<TEntity>().FindAsync(id);
             }
             catch (Exception ex)
             {
@@ -39,12 +38,12 @@ namespace EduHubRepository
 
         }
 
-        public int Insert(TEntity entity)
+        public async Task<int> Insert(TEntity entity)
         {
             try
             {
                 this.context.Set<TEntity>().Add(entity);
-                return this.context.SaveChanges();
+                return await this.context.SaveChangesAsync();
             }
             catch (Exception ex)
             {
@@ -54,12 +53,12 @@ namespace EduHubRepository
 
         }
 
-        public int Update(TEntity entity)
+        public async Task<int> Update(TEntity entity)
         {
             try
             {
                 this.context.Entry<TEntity>(entity).State = EntityState.Modified;
-                return this.context.SaveChanges();
+                return await this.context.SaveChangesAsync();
             }
             catch (Exception ex)
             {
@@ -82,6 +81,26 @@ namespace EduHubRepository
                 throw ex;
             }
 
+        }
+
+        List<TEntity> IRepository<TEntity>.GetAllAsync()
+        {
+            throw new NotImplementedException();
+        }
+
+        TEntity IRepository<TEntity>.Get(long id)
+        {
+            throw new NotImplementedException();
+        }
+
+        int IRepository<TEntity>.Insert(TEntity entity)
+        {
+            throw new NotImplementedException();
+        }
+
+        int IRepository<TEntity>.Update(TEntity entity)
+        {
+            throw new NotImplementedException();
         }
     }
 }

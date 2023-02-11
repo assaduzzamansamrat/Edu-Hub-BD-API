@@ -9,7 +9,7 @@ namespace EduHubInterface
 {
     public interface IRepository<TEntity> where TEntity : Entity
     {
-        List<TEntity> GetAll();
+        List<TEntity> GetAllAsync();
         TEntity Get(long id);
         int Insert(TEntity entity);
         int Update(TEntity entity);
