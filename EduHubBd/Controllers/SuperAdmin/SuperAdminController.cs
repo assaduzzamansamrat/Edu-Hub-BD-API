@@ -29,6 +29,22 @@ namespace EduHubBd.Controllers.SuperAdmin
                 throw ex;
             }
         }
-     
+
+        [Route("GetAllUsersBySearch")]
+        [HttpGet()]
+        public async Task<IActionResult> GetAllBySearch(string searchText, string searchFilter, int pageNumber, int pageSize)
+        {
+            try
+            {
+                List<User> users = await this.userRepo.SearchAsync(searchText, searchFilter, pageNumber, pageSize);
+                return Ok(new { users });
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
+
     }
 }

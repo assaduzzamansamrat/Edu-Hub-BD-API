@@ -1,10 +1,14 @@
 ﻿using EduHubEntity;
 using EduHubInterface;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.Data.SqlClient;
+
 
 namespace EduHubRepository
 {
@@ -16,14 +20,20 @@ namespace EduHubRepository
         {
             context = _context;
         }
-        public async Task<List<User>> SearchAsync(string searchText)
+        public async Task<List<User>> SearchAsync(string searchText,string searchFilter,int pageNumber,int pageSize)
         {
             try
             {
                 List<User> userList = new List<User>();
-                userList.AddRange(await this.GetAllAsync());
-                userList.Where(x => x.FirstName.Contains(searchText));
-                userList.Where(x => x.LastName.Contains(searchText));
+
+                SqlParameter prmSearchText = new SqlParameter("@searchText", searchText);
+                SqlParameter prmSearchFilter = new SqlParameter("@searchFilter", searchFilter);
+                SqlParameter prmPageNumber = new SqlParameter("@pageNumber", pageNumber);
+                SqlParameter prmpageSize = new SqlParameter("@pageSize", searchText);
+
+                userList = context.Users.FromSqlRaw("GetAllUserListBySearchPrm @searchText,searchFilter,@pageNumber,@pageSize",
+                    prmSearchText, prmSearchFilter, prmPageNumber, prmpageSize).ToList();
+
                 return userList;
             }
             catch (Exception ex)
