@@ -29,7 +29,7 @@ namespace EduHubRepository
                 SqlParameter prmSearchText = new SqlParameter("@searchText", searchText);
                 SqlParameter prmSearchFilter = new SqlParameter("@searchFilter", searchFilter);
                 SqlParameter prmPageNumber = new SqlParameter("@pageNumber", pageNumber);
-                SqlParameter prmpageSize = new SqlParameter("@pageSize", searchText);
+                SqlParameter prmpageSize = new SqlParameter("@pageSize", pageSize);
 
                 userList = context.Users.FromSqlRaw("GetAllUserListBySearchPrm @searchText,searchFilter,@pageNumber,@pageSize",
                     prmSearchText, prmSearchFilter, prmPageNumber, prmpageSize).ToList();
