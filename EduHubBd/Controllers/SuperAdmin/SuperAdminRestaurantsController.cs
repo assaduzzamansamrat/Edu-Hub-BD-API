@@ -6,18 +6,18 @@ namespace EduHubBd.Controllers.SuperAdmin
 {
     [ApiController]
     [Route("api/[controller]")]
-    public class RestaurantsController : ControllerBase
+    public class SuperAdminRestaurantsController : ControllerBase
     {
         private IRestaurantAdminRepository restaurantRepo;
-        public RestaurantsController(IRestaurantAdminRepository _restaurentRepo)
+        public SuperAdminRestaurantsController(IRestaurantAdminRepository _restaurentRepo)
         {
             this.restaurantRepo = _restaurentRepo;
         }
 
 
-        [Route("RegisterNewRestaurant")]
+        [Route("CreateRestaurant")]
         [HttpPost]
-        public async Task<IActionResult> CreateNewRestaurant(RestaurantAdmin restaurantAdmin)
+        public async Task<IActionResult> CreateRestaurant(RestaurantAdmin restaurantAdmin)
         {
             try
             {

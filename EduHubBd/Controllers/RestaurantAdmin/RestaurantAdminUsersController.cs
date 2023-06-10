@@ -7,11 +7,11 @@ namespace EduHubBd.Controllers.RestaurantAdmins
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class UsersController : ControllerBase
+    public class RestaurantAdminUsersController : ControllerBase
     {
         private IUserRepository userRepo;
 
-        public UsersController(IUserRepository userRepo)
+        public RestaurantAdminUsersController(IUserRepository userRepo)
         {
             this.userRepo = userRepo;
         }
