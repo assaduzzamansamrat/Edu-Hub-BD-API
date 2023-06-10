@@ -6,13 +6,13 @@ namespace EduHubBd.Controllers.SuperAdmin
 {
     [ApiController]
     [Route("api/[controller]")]
-    public class SuperAdminController : ControllerBase
+    public class UsersController : ControllerBase
     {
         private IUserRepository userRepo;
 
-        public SuperAdminController(IUserRepository userRepo)
+        public UsersController(IUserRepository _userRepo)
         {
-            this.userRepo = userRepo;
+            this.userRepo = _userRepo;
         }
         [Route("GetAllUsers")]
         [HttpGet()]

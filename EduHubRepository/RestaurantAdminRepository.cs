@@ -19,21 +19,21 @@ namespace EduHubRepository
             context = _context;
         }
 
-        public async Task<List<User>> SearchAsync(string searchText, string searchFilter, int pageNumber, int pageSize)
+        public async Task<List<RestaurantAdmin>> SearchAsync(string searchText, string searchFilter, int pageNumber, int pageSize)
         {
             try
             {
-                List<User> userList = new List<User>();
+                List<RestaurantAdmin> restaurantList = new List<RestaurantAdmin>();
 
                 SqlParameter prmSearchText = new SqlParameter("@searchText", searchText);
                 SqlParameter prmSearchFilter = new SqlParameter("@searchFilter", searchFilter);
                 SqlParameter prmPageNumber = new SqlParameter("@pageNumber", pageNumber);
                 SqlParameter prmpageSize = new SqlParameter("@pageSize", pageSize);
 
-                userList = context.Users.FromSqlRaw("GetAllReastaurantListBySearchPrm @searchText,searchFilter,@pageNumber,@pageSize",
+                restaurantList = context.RestaurantAdmins.FromSqlRaw("GetAllReastaurantListBySearchPrm @searchText,searchFilter,@pageNumber,@pageSize",
                     prmSearchText, prmSearchFilter, prmPageNumber, prmpageSize).ToList();
 
-                return userList;
+                return restaurantList;
             }
             catch (Exception ex)
             {

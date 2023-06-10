@@ -9,6 +9,6 @@ namespace EduHubInterface
 {
     public interface IRestaurantAdminRepository : IRepository<RestaurantAdmin>
     {
-        Task<List<User>> SearchAsync(string searchText, string searchFilter, int pageNumber, int pageSize);
+        Task<List<RestaurantAdmin>> SearchAsync(string searchText, string searchFilter, int pageNumber, int pageSize);
     }
 }

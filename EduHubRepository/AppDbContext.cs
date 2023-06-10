@@ -20,5 +20,6 @@ namespace EduHubRepository
             base.OnModelCreating(modelBuilder);
         }
         public DbSet<User> Users { get; set; }  
+        public DbSet<RestaurantAdmin> RestaurantAdmins { get; set; }
     }
 }
