@@ -1,11 +1,13 @@
 ﻿using EduHubEntity;
 using EduHubInterface;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace EduHubBd.Controllers.SuperAdmin
 {
     [ApiController]
     [Route("api/[controller]")]
+    [Authorize]
     public class SuperAdminRestaurantsController : ControllerBase
     {
         private IRestaurantAdminRepository restaurantRepo;

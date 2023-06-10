@@ -1,5 +1,6 @@
 ﻿using EduHubEntity;
 using EduHubInterface;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -7,6 +8,7 @@ namespace EduHubBd.Controllers.RestaurantAdmins
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class RestaurantAdminUsersController : ControllerBase
     {
         private IUserRepository userRepo;

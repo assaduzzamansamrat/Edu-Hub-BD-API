@@ -10,5 +10,6 @@ namespace EduHubInterface
     public interface IUserRepository : IRepository<User>
     {
         Task<List<User>> SearchAsync(string searchText, string searchFilter, int pageNumber, int pageSize);
+        Task<User> GetUserByEmailAndPassword(string email, string password);
     }
 }

@@ -44,6 +44,19 @@ namespace EduHubRepository
 
         }
 
+        public async Task<User> GetUserByEmailAndPassword(string email, string password)
+        {
+            try
+            {
+                User user = new User();
+                user = context.Set<User>().Where(x=> x.EmailAddress == email && x.Password == password).FirstOrDefault();
+                return user;
+            }
+            catch (Exception ex)
+            {
 
+                throw ex;
+            }
+        }
     }
 }
