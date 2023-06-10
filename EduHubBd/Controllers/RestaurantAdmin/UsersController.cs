@@ -1,27 +1,27 @@
 ﻿using EduHubEntity;
 using EduHubInterface;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using System;
 
-namespace EduHubBd.Controllers
+namespace EduHubBd.Controllers.RestaurantAdmins
 {
+    [Route("api/[controller]")]
     [ApiController]
-    [Route("api/[controller]")]  
-    public class SignUpController : ControllerBase
+    public class UsersController : ControllerBase
     {
         private IUserRepository userRepo;
 
-        public SignUpController(IUserRepository userRepo)
+        public UsersController(IUserRepository userRepo)
         {
             this.userRepo = userRepo;
         }
-        [Route("SignUp")]
+        [Route("CreateUser")]
         [HttpPost]
-        public async Task<IActionResult> SignUp(User user)
+        public async Task<IActionResult> CreateUser(User user)
         {
             try
             {
-                if(ModelState.IsValid == true)
+                if (ModelState.IsValid == true)
                 {
                     await this.userRepo.InsertAsync(user);
                     return Ok(new { result = true });
@@ -34,7 +34,5 @@ namespace EduHubBd.Controllers
                 throw ex;
             }
         }
-
-       
     }
 }
