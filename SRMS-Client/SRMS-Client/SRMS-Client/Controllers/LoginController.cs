@@ -1,16 +1,21 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using SRMS_Client.Models;
 using System.Net.Http.Headers;
+using System.Security.Claims;
 
 namespace SRMS_Client.Controllers
 {
+
     public class LoginController : Controller
     {
-        protected const string SessionEmail = "_Email";
-        protected const string SessionUserId = "_UserId";
-        protected const string SessionUserRole = "_UserRole";
-        protected const string SessionAccessToken = "_AccessToken";
+        //protected const string SessionEmail = "_Email";
+        //protected const string SessionUserId = "_UserId";
+        //protected const string SessionUserRole = "_UserRole";
+        //protected const string SessionAccessToken = "_AccessToken";
         public async Task<IActionResult> Index()
         {
             return View();
@@ -19,8 +24,9 @@ namespace SRMS_Client.Controllers
         [HttpPost]
         public async Task<ActionResult> Login(LoginModel loginModel)
         {
-            if(loginModel != null && ModelState.IsValid)
+            if (loginModel != null && ModelState.IsValid)
             {
+                bool isAuthenticate = false;
                 using (var httpClient = new HttpClient())
                 {
                     var requestString = JsonConvert.SerializeObject(loginModel);
@@ -37,23 +43,44 @@ namespace SRMS_Client.Controllers
 
                     LoginModel result = new LoginModel();
                     result = JsonConvert.DeserializeObject<LoginModel>(responseContent);
-                    HttpContext.Session.SetString(SessionEmail, result.EmailAddress);
-                    HttpContext.Session.SetString(SessionAccessToken, result.AccessToken);
-                    
-                    Console.WriteLine(JsonConvert.SerializeObject(response.Headers.ToList()));
+                    //HttpContext.Session.SetString(SessionEmail, result.EmailAddress);
+                    //HttpContext.Session.SetString(SessionAccessToken, result.AccessToken);
+                    ClaimsIdentity identity = null;
+                    identity = new ClaimsIdentity(new[]
+                    {
+                        new Claim(ClaimTypes.Name,result.EmailAddress),
+                        new Claim(ClaimTypes.Role,"User")
+                    }, CookieAuthenticationDefaults.AuthenticationScheme);
+                    isAuthenticate = true;
 
                     if (response.IsSuccessStatusCode)
                     {
-                        Console.WriteLine("Successful");
-                        Console.WriteLine(responseContent);
+                        if (isAuthenticate)
+                        {
+                            //var principal = new ClaimsPrincipal(identity);
+                            //var login =  HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, principal);
+
+                            await HttpContext.SignInAsync(
+                            CookieAuthenticationDefaults.AuthenticationScheme,
+                            new ClaimsPrincipal(identity),
+                            new AuthenticationProperties
+                            {
+                                IsPersistent = true,
+                                AllowRefresh = true,
+                                ExpiresUtc = DateTimeOffset.UtcNow.AddDays(365),
+                            });
+                            return RedirectToAction("Index", "UserDashBoard");
+                        }
                     }
                     else
                     {
-                        Console.WriteLine("Not successful");
+                        return RedirectToAction("Index", "Login");
                     }
+
+
                 }
             }
-            return  RedirectToAction("Index", "Login");
+            return RedirectToAction("Index", "Login");
         }
     }
 }
