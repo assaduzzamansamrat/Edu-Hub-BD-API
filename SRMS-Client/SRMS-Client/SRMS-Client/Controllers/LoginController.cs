@@ -1,12 +1,59 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
+using SRMS_Client.Models;
+using System.Net.Http.Headers;
 
 namespace SRMS_Client.Controllers
 {
     public class LoginController : Controller
     {
-        public IActionResult Index()
+        protected const string SessionEmail = "_Email";
+        protected const string SessionUserId = "_UserId";
+        protected const string SessionUserRole = "_UserRole";
+        protected const string SessionAccessToken = "_AccessToken";
+        public async Task<IActionResult> Index()
         {
             return View();
+        }
+
+        [HttpPost]
+        public async Task<ActionResult> Login(LoginModel loginModel)
+        {
+            if(loginModel != null && ModelState.IsValid)
+            {
+                using (var httpClient = new HttpClient())
+                {
+                    var requestString = JsonConvert.SerializeObject(loginModel);
+                    // Setup the HttpClient and make the call and get the relevant data.
+                    httpClient.BaseAddress = new Uri("https://localhost:7088");
+
+                    httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+
+                    var request = new HttpRequestMessage(HttpMethod.Post, $"/api/Login/Authenticate");
+                    request.Content = new StringContent(requestString, System.Text.Encoding.UTF8, "application/json");
+
+                    var response = await httpClient.SendAsync(request);
+                    var responseContent = await response.Content.ReadAsStringAsync();
+
+                    LoginModel result = new LoginModel();
+                    result = JsonConvert.DeserializeObject<LoginModel>(responseContent);
+                    HttpContext.Session.SetString(SessionEmail, result.EmailAddress);
+                    HttpContext.Session.SetString(SessionAccessToken, result.AccessToken);
+                    
+                    Console.WriteLine(JsonConvert.SerializeObject(response.Headers.ToList()));
+
+                    if (response.IsSuccessStatusCode)
+                    {
+                        Console.WriteLine("Successful");
+                        Console.WriteLine(responseContent);
+                    }
+                    else
+                    {
+                        Console.WriteLine("Not successful");
+                    }
+                }
+            }
+            return  RedirectToAction("Index", "Login");
         }
     }
 }

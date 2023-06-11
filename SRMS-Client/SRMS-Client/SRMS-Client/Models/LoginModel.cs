@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EduHubEntity.LoginModel
+namespace SRMS_Client.Models
 {
     public class LoginModel
     {

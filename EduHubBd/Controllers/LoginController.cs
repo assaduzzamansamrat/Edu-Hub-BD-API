@@ -24,12 +24,12 @@ namespace EduHubBd.Controllers
             this._configuration = configuration;
         }
         [HttpPost]
-        [Route("Login")]
-        public async Task<IActionResult> Login(LoginModel loginModel)
+        [Route("Authenticate")]
+        public async Task<IActionResult> Authenticate(LoginModel loginModel)
         {
             if (loginModel != null)
             {
-                User user = await this.userRepo.GetUserByEmailAndPassword(loginModel.UserName, loginModel.Password);
+                User user = await this.userRepo.GetUserByEmailAndPassword(loginModel.EmailAddress, loginModel.Password);
                 if (user == null)
                 {
                     return BadRequest("Invalid Credentials");

@@ -1,4 +1,5 @@
-﻿ @{
+﻿@model LoginModel;
+@{
     Layout = null;
 }
 <!DOCTYPE html>
@@ -61,10 +62,12 @@
             border-top: none !important;
             border-bottom: 1px solid #00BCD4 !important;
             width: 60% !important;
+            border-radius: 0;
         }
 
             .form-control:focus {
-                box-shadow: 0px 0px 1px 0.1rem #0be3d9f2 !important;
+                box-shadow: 0px 0px 1px 0.1rem #00BCD4 !important;
+                border-radius: .375rem !important;
             }
 
 
@@ -208,7 +211,7 @@
             padding: 20px 0px;
         }
 
-        .image-login{
+        .image-login {
             height: 280px;
             width: 325px;
             padding: 20px 0px;
@@ -291,9 +294,9 @@
     <div class="container" id="container">
         <div class="form-container sign-up-container">
             <form action="#">
-                <h1>Create Account</h1>               
+                <h1>Create Account</h1>
                 <span>Use your email for registration</span>
-                <input type="text" class="form-control" placeholder="restaurant Name" />
+                <input type="text" class="form-control" placeholder="Restaurant Name" />
                 <input type="email" class="form-control" placeholder="Email" />
                 <input type="password" class="form-control" placeholder="Password" />
                 <input type="password" class="form-control" placeholder="Confirm Password" />
@@ -301,22 +304,23 @@
             </form>
         </div>
         <div class="form-container sign-in-container">
-            <form action="#">
+            @using (Html.BeginForm("Login", "Login", FormMethod.Post, new {enctype = "multipart/form-data"}))
+            {
                 <h1>Welcome Back !</h1>
 
                 <p>Boost your business with our service</p>
-                <input type="email" class="form-control" placeholder="Email" />
-                <input type="password" class="form-control" placeholder="Password" />
+                <input type="email" id="EmailAddress" name="EmailAddress" class="form-control" placeholder="Email" />
+                <input type="password" id="Password" name="Password" class="form-control" placeholder="Password" />
                 <a href="#">Forgot your password?</a>
                 <button>Sign In</button>
-            </form>
+            }
         </div>
         <div class="overlay-container">
             <div class="overlay">
                 <div class="overlay-panel overlay-left">
                     <h1>Welcome Back!</h1>
-                    <p>To keep connected with us please login with your credentials</p>  
-                     <img class="image-login" src="~/Images/secure-login.gif" />
+                    <p>To keep connected with us please login with your credentials</p>
+                    <img class="image-login" src="~/Images/secure-login.gif" />
                     <button class="ghost" id="signIn">Sign In</button>
                 </div>
                 <div class="overlay-panel overlay-right">

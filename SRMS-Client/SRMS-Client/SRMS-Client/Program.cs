@@ -1,8 +1,14 @@
+using Microsoft.AspNetCore.Mvc;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
+
+builder.Services.AddMvc().AddSessionStateTempDataProvider();
+builder.Services.AddSession();
+builder.Services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Latest);
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -18,6 +24,7 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
+app.UseSession();
 app.UseAuthorization();
 
 app.MapControllerRoute(
