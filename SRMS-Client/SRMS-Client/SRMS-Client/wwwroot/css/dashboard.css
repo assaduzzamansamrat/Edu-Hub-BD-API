@@ -84,6 +84,7 @@
 
 body {
   margin: 0;
+  overflow:hidden !important;
   font-family: var(--bs-body-font-family);
   font-size: var(--bs-body-font-size);
   font-weight: var(--bs-body-font-weight);
@@ -95,12 +96,29 @@ body {
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
+.body-container {
+    padding-left: 17rem !important;
+    padding-top: 3.5rem !important;
+}
+.nav-bar-top-fixed {
+    background-color: #ffff !important;
+    position: fixed !important;
+    width: 79%;
+    left: 18%;
+    top: 1rem;
+    z-index: 1000 !important;
+    background-image: linear-gradient(to left, #04ae9a, #0e3f56);
+}
+.content-hider {
+    background-color: #f0f2f5 !important;
+    height: 16px;
+}
 hr {
-  margin: 1rem 0;
-  color: inherit;
-  border: 0;
-  border-top: 1px solid;
-  opacity: 0.25;
+    margin: 1rem 0;
+    color: inherit;
+    border: 0;
+    border-top: 1px solid;
+    opacity: 0.25;
 }
 
 h1,
@@ -23404,6 +23422,9 @@ hr.horizontal.gray-light {
   .g-sidenav-hidden.rtl .main-content {
     margin-right: 7rem !important;
   }
+    body-container {
+        padding-left: 17rem !important;
+    }
 }
 
 .rtl .ps__rail-y {
@@ -24521,6 +24542,7 @@ body:not(.dark-version) .sidenav.bg-transparent .collapse .nav-item .nav-link.ac
 
   .g-sidenav-show .sidenav.fixed-start+.main-content {
     margin-left: 0 !important;
+   
   }
 
   .g-sidenav-show.g-sidenav-pinned .sidenav {
@@ -27890,15 +27912,16 @@ pre[class*="language-"] {
 }
 
 .ps__thumb-y {
-  background-color: #aaa;
-  border-radius: 6px;
-  transition: background-color .2s linear, width .2s ease-in-out;
-  -webkit-transition: background-color .2s linear, width .2s ease-in-out;
-  width: 6px;
-  /* there must be 'right' for ps__thumb-y */
-  right: 2px;
-  /* please don't change 'position' */
-  position: absolute;
+    background-color: #aaa;
+    border-radius: 6px;
+    transition: background-color .2s linear, width .2s ease-in-out;
+    -webkit-transition: background-color .2s linear, width .2s ease-in-out;
+    width: 6px;
+    /* there must be 'right' for ps__thumb-y */
+    right: 2px;
+    /* please don't change 'position' */
+    position: absolute;
+   
 }
 
 .ps__rail-x:hover>.ps__thumb-x,
