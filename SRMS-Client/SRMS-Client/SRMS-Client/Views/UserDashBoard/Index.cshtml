@@ -81,7 +81,7 @@
                     <div class="row">
                         <div class="col-lg-2 col-2">
 
-                            <h6>Events</h6>
+                            <h6 class="table-title">Events</h6>
                             <p class="text-sm mb-0">
                                 <i class="fa fa-check text-info" aria-hidden="true"></i>
                                 <span class="font-weight-bold ms-1">30 done</span> this month
@@ -93,8 +93,7 @@
                         <div class="col-lg-3 col-3">
                             <div class="input-group">
                                 <div class="form-outline">
-                                    <input id="search-input" type="search" class="form-control" />
-                                    <label class="form-label" for="form1">Search</label>
+                                    <input id="search-input" type="search" placeholder="Search by event name" class="form-control" />
                                 </div>
                                 <button id="search-button" type="button" class="btn bg-gradient-primary">
                                     <i class="fas fa-search"></i>
@@ -122,7 +121,7 @@
                             </div>
                         </div>
                         <div class="col-lg-2 col-2 my-auto text-end">
-                            <button type="button" class="btn bg-gradient-primary"> <i class="large material-icons">add_circle_outline</i> &nbsp; new event</button>
+                            <button type="button" onclick="ShowCreateNewEventModal();" class="btn bg-gradient-primary"> <i class="large material-icons">add_circle_outline</i> &nbsp; new event</button>
                             @* <div class="dropdown float-lg-end pe-4">
                                 <a class="cursor-pointer" id="dropdownTable" data-bs-toggle="dropdown" aria-expanded="false">
                                 <i class="fa fa-ellipsis-v text-secondary"></i>
@@ -381,6 +380,19 @@
                                 </tr>
                             </tbody>
                         </table>
+
+                        <div class="center">
+                            <div class="pagination">
+                                <a href="#">&laquo;</a>
+                                <a href="#">1</a>
+                                <a href="#" class="active">2</a>
+                                <a href="#">3</a>
+                                <a href="#">4</a>
+                                <a href="#">5</a>
+                                <a href="#">6</a>
+                                <a href="#">&raquo;</a>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -388,3 +400,59 @@
 
     </div>
 </div>
+
+<div class="modal fade" id="CreateNewEvent" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content add-edit-modal">
+            <div class="modal-header">
+                <h4 class="modal-title">Create new event</h4>
+                <button type="button" class="close modal-close-btn" onclick="CloseCreateEventModal();">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p class="modal-paragraph"><strong>Please enter the informations for creating a new event.</strong></p>
+                <div class="row">
+                    <div class="col">
+                        <!-- Name input -->
+                        <div class="form-outline">
+                            <input type="text" id="form8Example1" class="form-control" />
+                            <label class="form-label" for="form8Example1">Event Name</label>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <!-- Email input -->
+                        <div class="form-outline">
+                            <input type="email" id="form8Example2" class="form-control" />
+                            <label class="form-label" for="form8Example2">Event Type</label>
+                        </div>
+                    </div>
+
+                    
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <!-- Name input -->
+                        <div class="form-outline">
+                            <input type="text" id="form8Example1" class="form-control" />
+                            <label class="form-label" for="form8Example1">Contact Number</label>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <!-- Email input -->
+                        <div class="form-outline">
+                            <input type="email" id="form8Example2" class="form-control" />
+                            <label class="form-label" for="form8Example2">Email address</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" onclick="CloseCreateEventModal();">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script src="~/js/user/events.js?v=3.1.0"></script>
