@@ -92,10 +92,10 @@
 
                         <div class="col-lg-3 col-3">
                             <div class="input-group">
-                                <div class="form-outline">
+                                <div class="form-outline form-outline-custom">
                                     <input id="search-input" type="search" placeholder="Search by event name" class="form-control" />
                                 </div>
-                                <button id="search-button" type="button" class="btn bg-gradient-primary">
+                                <button id="search-button" type="button" class="btn btn-primary">
                                     <i class="fas fa-search"></i>
                                 </button>
                             </div>
@@ -109,7 +109,7 @@
                         </div>
                         <div class="col-lg-3 col-3">
                             <div class="dropdown">
-                                <button class="btn bg-gradient-primary dropdown-toggle" type="button" data-toggle="dropdown">
+                                <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
                                     Dropdown Example
                                     <span class="caret"></span>
                                 </button>
@@ -121,7 +121,7 @@
                             </div>
                         </div>
                         <div class="col-lg-2 col-2 my-auto text-end">
-                            <button type="button" onclick="ShowCreateNewEventModal();" class="btn bg-gradient-primary"> <i class="large material-icons">add_circle_outline</i> &nbsp; new event</button>
+                            <button type="button" onclick="ShowCreateNewEventModal();" class="btn btn-primary"> <i class="large material-icons">add_circle_outline</i> &nbsp; new event</button>
                             @* <div class="dropdown float-lg-end pe-4">
                                 <a class="cursor-pointer" id="dropdownTable" data-bs-toggle="dropdown" aria-expanded="false">
                                 <i class="fa fa-ellipsis-v text-secondary"></i>
@@ -447,8 +447,10 @@
                     </div>
                 </div>
             </div>
+
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" onclick="CloseCreateEventModal();">Close</button>
+                <button type="button" class="btn btn-cancel" onclick="CloseCreateEventModal();">Close</button>
+                <button type="button" class="btn btn-primary" onclick="CloseCreateEventModal();">Save</button>
             </div>
         </div>
     </div>
