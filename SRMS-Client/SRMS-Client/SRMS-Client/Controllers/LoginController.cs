@@ -49,7 +49,7 @@ namespace SRMS_Client.Controllers
                     identity = new ClaimsIdentity(new[]
                     {
                         new Claim(ClaimTypes.Name,result.EmailAddress),
-                        new Claim(ClaimTypes.Role,"User")
+                        new Claim(ClaimTypes.Role,result.Role)
                     }, CookieAuthenticationDefaults.AuthenticationScheme);
                     isAuthenticate = true;
 
@@ -69,7 +69,15 @@ namespace SRMS_Client.Controllers
                                 AllowRefresh = true,
                                 ExpiresUtc = DateTimeOffset.UtcNow.AddDays(365),
                             });
-                            return RedirectToAction("Index", "UserDashBoard");
+                            if(result.Role == "User")
+                            {
+                                return RedirectToAction("Index", "UserDashBoard");
+                            }
+                            else if (result.Role == "RestaurantAdmin")
+                            {
+                                return RedirectToAction("Index", "RestaurantAdminDashBoard");
+                            }
+
                         }
                     }
                     else

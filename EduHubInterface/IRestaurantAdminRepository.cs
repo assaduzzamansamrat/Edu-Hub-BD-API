@@ -10,5 +10,7 @@ namespace EduHubInterface
     public interface IRestaurantAdminRepository : IRepository<RestaurantAdmin>
     {
         Task<List<RestaurantAdmin>> SearchAsync(string searchText, string searchFilter, int pageNumber, int pageSize);
+
+        Task<RestaurantAdmin> GetRestaurantAdminByEmailAndPassword(string email, string password);
     }
 }

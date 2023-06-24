@@ -15,6 +15,7 @@ builder.Services.AddDbContext<AppDbContext>(options =>
         options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 //builder.Services.AddScoped(typeof(IRepository), typeof(Repository));
 builder.Services.AddScoped(typeof(IUserRepository), typeof(UserRepository));
+builder.Services.AddScoped(typeof(IRestaurantAdminRepository), typeof(RestaurantAdminRepository));
 builder.Services.AddMvc().AddSessionStateTempDataProvider();
 builder.Services.AddSession();
 builder.Services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Latest);

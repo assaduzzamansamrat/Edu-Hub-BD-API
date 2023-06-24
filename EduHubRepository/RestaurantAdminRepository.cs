@@ -19,6 +19,21 @@ namespace EduHubRepository
             context = _context;
         }
 
+        public async Task<RestaurantAdmin> GetRestaurantAdminByEmailAndPassword(string email, string password)
+        {
+            try
+            {
+                RestaurantAdmin restaurantAdmin = new RestaurantAdmin();
+                restaurantAdmin = context.Set<RestaurantAdmin>().Where(x => x.EmailAddress == email && x.Password == password).FirstOrDefault();
+                return restaurantAdmin;
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
+
         public async Task<List<RestaurantAdmin>> SearchAsync(string searchText, string searchFilter, int pageNumber, int pageSize)
         {
             try
