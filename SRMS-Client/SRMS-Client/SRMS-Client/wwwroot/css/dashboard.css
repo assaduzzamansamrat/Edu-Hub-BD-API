@@ -28029,3 +28029,7 @@ pre[class*="language-"] {
 .form-outline-custom {
     width: 70% !important;
 }
+
+.hidden{
+    display:none !important;
+}

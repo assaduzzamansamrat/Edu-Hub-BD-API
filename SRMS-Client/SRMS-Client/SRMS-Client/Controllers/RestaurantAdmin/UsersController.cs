@@ -16,6 +16,7 @@ namespace SRMS_Client.Controllers.RestaurantAdmin
             return View("~/Views/RestaurantAdmin/Users/Index.cshtml");
         }
 
+        [HttpPost]
         public async Task<IActionResult> CreateUser(User user)
         {
             using (var httpClient = new HttpClient())

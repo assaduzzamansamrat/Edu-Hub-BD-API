@@ -57,16 +57,13 @@ app.UseAuthorization();
 
 
 
-    app.MapControllerRoute(
-    name: "default",
-    pattern: "{controller=Login}/{action=Index}/{id?}");
+app.MapControllerRoute(
+name: "default",
+pattern: "{controller=Login}/{action=Index}/{id?}");
 
-    app.MapControllerRoute(
-        name: "RoutingForUserLogout",
-        pattern: "{controller=UserDashBoard}/{action=Logout}");
-
-
-
+app.MapControllerRoute(
+    name: "RoutingForUserLogout",
+    pattern: "{controller=UserDashBoard}/{action=Logout}");
 
 
 app.Run();

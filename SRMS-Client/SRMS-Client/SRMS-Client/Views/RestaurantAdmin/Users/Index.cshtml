@@ -334,20 +334,20 @@
                 <p class="modal-paragraph"><strong>Please enter the informations for creating a new user.</strong></p>
                 <div class="row">
 
-                    @using (Html.BeginForm("Users", "CreateUser", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                    @using (Html.BeginForm("CreateUser", "Users", FormMethod.Post, new { enctype = "multipart/form-data" }))
                     {
                         <div class="col">
                             <!-- Name input -->
                         <div class="form-outline">
-                                <input type="text" id="form8Example1" class="form-control" />
-                                <label class="form-label" for="form8Example1">Event Name</label>
+                                <input type="text" id="FirstName" name="FirstName" class="form-control" />
+                                <label class="form-label" for="FirstName">Event Name</label>
                             </div>
                         </div>
                         <div class="col">
                             <!-- Email input -->
                         <div class="form-outline">
-                                <input type="email" id="form8Example2" class="form-control" />
-                                <label class="form-label" for="form8Example2">Event Type</label>
+                                <input type="text" id="LastName" name="LastName" class="form-control" />
+                                <label class="form-label" for="LastName">Event Type</label>
                             </div>
                         </div>
 
@@ -355,19 +355,19 @@
                             <div class="col">
                                 <!-- Name input -->
                             <div class="form-outline">
-                                    <input type="text" id="form8Example1" class="form-control" />
-                                    <label class="form-label" for="form8Example1">Contact Number</label>
+                                    <input type="email" id="EmailAddress" name="EmailAddress" class="form-control" />
+                                    <label class="form-label" for="EmailAddress">Contact Number</label>
                                 </div>
                             </div>
                             <div class="col">
                                 <!-- Email input -->
                             <div class="form-outline">
-                                    <input type="email" id="form8Example2" class="form-control" />
-                                    <label class="form-label" for="form8Example2">Email address</label>
+                                    <input type="text" id="PhoneNumber" class="form-control" />
+                                    <label class="form-label" for="PhoneNumber">Email address</label>
                                 </div>
                             </div>
                         </div>
-                        <button class="hidden" type="submit">Sign In</button>
+                        <button class="hidden" id="userCreateFormSubmitBtn" type="submit">Sign In</button>
                     }
 
 
@@ -378,7 +378,7 @@
 
             <div class="modal-footer">
                 <button type="button" class="btn btn-cancel" onclick="CloseCreateNewUserModal();">Close</button>
-                <button type="button" class="btn btn-primary" onclick="CloseCreateNewUserModal();">Save</button>
+                <button type="button" class="btn btn-primary" onclick="SubmitUserCreateForm();">Save</button>
             </div>
         </div>
     </div>
