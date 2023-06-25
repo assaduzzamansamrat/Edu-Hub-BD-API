@@ -3,6 +3,8 @@ using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
+using SRMS_Client.HelperClasses;
+using SRMS_Client.HelperClasses.Enum;
 using SRMS_Client.Models;
 using System.Net.Http.Headers;
 using System.Security.Claims;
@@ -49,7 +51,7 @@ namespace SRMS_Client.Controllers
                     identity = new ClaimsIdentity(new[]
                     {
                         new Claim(ClaimTypes.Name,result.EmailAddress),
-                        new Claim(ClaimTypes.Role,result.Role)
+                        new Claim(ClaimTypes.Role,result.Role)                      
                     }, CookieAuthenticationDefaults.AuthenticationScheme);
                     isAuthenticate = true;
 
@@ -69,7 +71,8 @@ namespace SRMS_Client.Controllers
                                 AllowRefresh = true,
                                 ExpiresUtc = DateTimeOffset.UtcNow.AddDays(365),
                             });
-                            if(result.Role == "User")
+                            LoggedInUserInfoFromCookie.SetCookie(this, CookieNameEnum.AccessToken.ToString(), result.AccessToken);
+                            if (result.Role == "User")
                             {
                                 return RedirectToAction("Index", "UserDashBoard");
                             }

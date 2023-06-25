@@ -19,7 +19,8 @@ builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationSc
        
         options.AccessDeniedPath = new PathString("/Home/Error/");
         options.LoginPath = new PathString("/Login/Index/");
-       
+        options.ExpireTimeSpan = TimeSpan.FromDays(365);
+
     });
 
 
@@ -47,7 +48,7 @@ app.UseRouting();
 app.UseSession();
 var cookiePolicyOptions = new CookiePolicyOptions
 {
-    MinimumSameSitePolicy = SameSiteMode.Strict,
+    MinimumSameSitePolicy = SameSiteMode.Strict  
 };
 app.UseCookiePolicy(cookiePolicyOptions);
 

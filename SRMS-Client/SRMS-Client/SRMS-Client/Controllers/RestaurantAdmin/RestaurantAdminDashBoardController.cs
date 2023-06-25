@@ -7,9 +7,11 @@ namespace SRMS_Client.Controllers.RestaurantAdmin
     [Authorize(Roles = "RestaurantAdmin")]
     public class RestaurantAdminDashBoardController : Controller
     {
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            return View();
+            ViewBag.SubPageName = "DashBoard";
+            ViewBag.MainPageName = "DashBoard";
+            return View("~/Views/RestaurantAdmin/RestaurantAdminDashBoard/Index.cshtml");
         }
         [HttpGet]
         public async Task<IActionResult> Logout()

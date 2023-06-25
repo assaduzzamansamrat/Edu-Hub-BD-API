@@ -3,77 +3,6 @@
 }
 
 <div class="container-fluid py-4">
-    <div class="row">
-        <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
-            <div class="card">
-                <div class="card-header p-3 pt-2">
-                    <div class="icon icon-lg icon-shape card-icon-purple shadow-dark text-center border-radius-xl mt-n4 position-absolute">
-                        <i class="material-icons opacity-10">monetization_on</i>
-                    </div>
-                    <div class="text-end pt-1">
-                        <p class="text-sm mb-0 text-capitalize">Today's sell</p>
-                        <h4 class="mb-0">$53k</h4>
-                    </div>
-                </div>
-                <hr class="dark horizontal my-0">
-                <div class="card-footer p-3">
-                    <p class="mb-0"><span class="text-success text-sm font-weight-bolder">+55% </span>than last week</p>
-                </div>
-            </div>
-        </div>
-        <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
-            <div class="card">
-                <div class="card-header p-3 pt-2">
-                    <div class="icon icon-lg icon-shape card-icon-pink shadow-primary text-center border-radius-xl mt-n4 position-absolute">
-                        <i class="material-icons opacity-10">person</i>
-                    </div>
-                    <div class="text-end pt-1">
-                        <p class="text-sm mb-0 text-capitalize">Today's Orders</p>
-                        <h4 class="mb-0">2,300</h4>
-                    </div>
-                </div>
-                <hr class="dark horizontal my-0">
-                <div class="card-footer p-3">
-                    <p class="mb-0"><span class="text-success text-sm font-weight-bolder">+3% </span>than last month</p>
-                </div>
-            </div>
-        </div>
-        <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
-            <div class="card">
-                <div class="card-header p-3 pt-2">
-                    <div class="icon icon-lg icon-shape card-icon-green shadow-success text-center border-radius-xl mt-n4 position-absolute">
-                        <i class="material-icons opacity-10">person</i>
-                    </div>
-                    <div class="text-end pt-1">
-                        <p class="text-sm mb-0 text-capitalize">New Clients</p>
-                        <h4 class="mb-0">3,462</h4>
-                    </div>
-                </div>
-                <hr class="dark horizontal my-0">
-                <div class="card-footer p-3">
-                    <p class="mb-0"><span class="text-danger text-sm font-weight-bolder">-2%</span> than yesterday</p>
-                </div>
-            </div>
-        </div>
-        <div class="col-xl-3 col-sm-6">
-            <div class="card">
-                <div class="card-header p-3 pt-2">
-                    <div class="icon icon-lg icon-shape card-icon-blue shadow-info text-center border-radius-xl mt-n4 position-absolute">
-                        <i class="material-icons opacity-10">monetization_on</i>
-                    </div>
-                    <div class="text-end pt-1">
-                        <p class="text-sm mb-0 text-capitalize">This month's sell</p>
-                        <h4 class="mb-0">$103,430</h4>
-                    </div>
-                </div>
-                <hr class="dark horizontal my-0">
-                <div class="card-footer p-3">
-                    <p class="mb-0"><span class="text-success text-sm font-weight-bolder">+5% </span>than yesterday</p>
-                </div>
-            </div>
-        </div>
-    </div>
-
     <div class="row mb-4 event-container">
         <div class="col-lg-12 col-md-12 mb-md-0 mb-4">
             <div class="card">
@@ -81,12 +10,12 @@
                     <div class="row">
                         <div class="col-lg-2 col-2">
 
-                            <h6 class="table-title">Events</h6>
-                            <p class="text-sm mb-0">
+                            <h6 class="table-title">Users List</h6>
+                            @* <p class="text-sm mb-0">
                                 <i class="fa fa-check text-info" aria-hidden="true"></i>
                                 <span class="font-weight-bold ms-1">30 done</span> this month
-                            </p>
-
+                                </p>
+                            *@
 
                         </div>
 
@@ -121,17 +50,8 @@
                             </div>
                         </div>
                         <div class="col-lg-2 col-2 my-auto text-end">
-                            <button type="button" onclick="ShowCreateNewEventModal();" class="btn btn-primary"> <i class="large material-icons">add_circle_outline</i> &nbsp; new event</button>
-                            @* <div class="dropdown float-lg-end pe-4">
-                                <a class="cursor-pointer" id="dropdownTable" data-bs-toggle="dropdown" aria-expanded="false">
-                                <i class="fa fa-ellipsis-v text-secondary"></i>
-                                </a>
-                                <ul class="dropdown-menu px-2 py-3 ms-sm-n4 ms-n5" aria-labelledby="dropdownTable">
-                                <li><a class="dropdown-item border-radius-md" href="javascript:;">Action</a></li>
-                                <li><a class="dropdown-item border-radius-md" href="javascript:;">Another action</a></li>
-                                <li><a class="dropdown-item border-radius-md" href="javascript:;">Something else here</a></li>
-                                </ul>
-                                </div>*@
+                            <button type="button" onclick="ShowCreateNewUserModal();" class="btn btn-primary"> <i class="large material-icons">add_circle_outline</i> &nbsp; new user</button>
+
                         </div>
                     </div>
                 </div>
@@ -401,60 +321,67 @@
     </div>
 </div>
 
-<div class="modal fade" id="CreateNewEvent" role="dialog">
+<div class="modal fade" id="CreateNewUser" role="dialog">
     <div class="modal-dialog">
 
         <!-- Modal content-->
         <div class="modal-content add-edit-modal">
             <div class="modal-header">
-                <h4 class="modal-title">Create new event</h4>
-                <button type="button" class="close modal-close-btn" onclick="CloseCreateEventModal();">&times;</button>
+                <h4 class="modal-title">Create new user</h4>
+                <button type="button" class="close modal-close-btn" onclick="CloseCreateNewUserModal();">&times;</button>
             </div>
             <div class="modal-body">
-                <p class="modal-paragraph"><strong>Please enter the informations for creating a new event.</strong></p>
+                <p class="modal-paragraph"><strong>Please enter the informations for creating a new user.</strong></p>
                 <div class="row">
-                    <div class="col">
-                        <!-- Name input -->
-                        <div class="form-outline">
-                            <input type="text" id="form8Example1" class="form-control" />
-                            <label class="form-label" for="form8Example1">Event Name</label>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <!-- Email input -->
-                        <div class="form-outline">
-                            <input type="email" id="form8Example2" class="form-control" />
-                            <label class="form-label" for="form8Example2">Event Type</label>
-                        </div>
-                    </div>
 
-                    
-                </div>
-                <div class="row">
-                    <div class="col">
-                        <!-- Name input -->
+                    @using (Html.BeginForm("Users", "CreateUser", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                    {
+                        <div class="col">
+                            <!-- Name input -->
                         <div class="form-outline">
-                            <input type="text" id="form8Example1" class="form-control" />
-                            <label class="form-label" for="form8Example1">Contact Number</label>
+                                <input type="text" id="form8Example1" class="form-control" />
+                                <label class="form-label" for="form8Example1">Event Name</label>
+                            </div>
                         </div>
-                    </div>
-                    <div class="col">
-                        <!-- Email input -->
+                        <div class="col">
+                            <!-- Email input -->
                         <div class="form-outline">
-                            <input type="email" id="form8Example2" class="form-control" />
-                            <label class="form-label" for="form8Example2">Email address</label>
+                                <input type="email" id="form8Example2" class="form-control" />
+                                <label class="form-label" for="form8Example2">Event Type</label>
+                            </div>
                         </div>
-                    </div>
+
+                        <div class="row">
+                            <div class="col">
+                                <!-- Name input -->
+                            <div class="form-outline">
+                                    <input type="text" id="form8Example1" class="form-control" />
+                                    <label class="form-label" for="form8Example1">Contact Number</label>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <!-- Email input -->
+                            <div class="form-outline">
+                                    <input type="email" id="form8Example2" class="form-control" />
+                                    <label class="form-label" for="form8Example2">Email address</label>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="hidden" type="submit">Sign In</button>
+                    }
+
+
+
                 </div>
+
             </div>
 
             <div class="modal-footer">
-                <button type="button" class="btn btn-cancel" onclick="CloseCreateEventModal();">Close</button>
-                <button type="button" class="btn btn-primary" onclick="CloseCreateEventModal();">Save</button>
+                <button type="button" class="btn btn-cancel" onclick="CloseCreateNewUserModal();">Close</button>
+                <button type="button" class="btn btn-primary" onclick="CloseCreateNewUserModal();">Save</button>
             </div>
         </div>
     </div>
 </div>
 
-
-<script src="~/js/user/events.js?v=3.1.0"></script>
+<script src="~/js/restaurantadmin/restaurantadmin.js?v=3.1.0"></script>
